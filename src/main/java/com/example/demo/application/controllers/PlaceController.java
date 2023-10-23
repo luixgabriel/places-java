@@ -14,6 +14,7 @@ import com.example.demo.application.dtos.PlaceResponse;
 import com.example.demo.application.viewmodels.PlaceMapper;
 import com.example.demo.domain.services.PlaceService;
 
+import jakarta.validation.Valid;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -24,7 +25,7 @@ public class PlaceController {
     PlaceService placeService;
 
     @PostMapping("")
-    public ResponseEntity<Mono<PlaceResponse>> create(@RequestBody PlaceRequest data){
+    public ResponseEntity<Mono<PlaceResponse>> create(@Valid @RequestBody PlaceRequest data){
         var place = placeService.create(data).map(PlaceMapper::fromPlaceToResponse);
         return ResponseEntity.status(HttpStatus.CREATED).body(place);
     }

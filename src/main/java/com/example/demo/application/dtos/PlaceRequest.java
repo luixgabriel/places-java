@@ -1,8 +1,8 @@
 package com.example.demo.application.dtos;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
 
-public record PlaceRequest(String name, String slug, String city, String state, LocalDateTime createdAt, LocalDateTime updatedAt){
+public record PlaceRequest(@NotBlank String name,@NotBlank String city, @NotBlank String state){
 
 }
     
